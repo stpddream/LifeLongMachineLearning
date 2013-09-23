@@ -1,0 +1,309 @@
+package edu.eatonlab.imageprofessor.server;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfFloat;
+import org.opencv.core.MatOfInt;
+import org.opencv.core.Point;
+import org.opencv.core.Range;
+import org.opencv.core.Scalar;
+import org.opencv.core.TermCriteria;
+import org.opencv.highgui.Highgui;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.ml.CvSVM;
+
+public class CVTest {
+
+	private static ArrayList<Mat> sources;
+
+	public static void main(String[] args) {
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
+		/* Configuration Variables */
+		int imgWidth = 200;
+		int imgHeight = 200;       
+		int numPatch = 200;
+		int patchWidth = 50;
+		int patchHeight = 50;
+		int k = 200;                                //kmeans number of center
+		String filePathRed = "base/Red/";
+		String filePathBlack = "base/Black";
+		String procPathRed = "base/ProcRed";
+		String procPathBlack = "base/ProcBlack";
+		/************************/
+
+		sources = new ArrayList<Mat>();
+
+		/* Image IO */
+		try {
+			
+			/* Read Red Staplers */
+			File folder = new File(filePathRed);
+			BufferedImage currentImage;
+			for(final File fileEntry : folder.listFiles()) {
+				if(!fileEntry.isDirectory()) {
+					
+					//Resize Image
+					currentImage = ImageProc.resize(ImageIO.read(fileEntry), imgWidth, imgHeight);                
+					
+					File outFile = new File(procPathRed + "/" + fileEntry.getName());
+					ImageIO.write(currentImage, "JPG", outFile);
+					sources.add(Highgui.imread(outFile.getPath()));
+				}
+			}
+			
+			/* Read Black Staplers */
+			folder = new File(filePathBlack);
+			for(final File fileEntry : folder.listFiles()) {
+				if(!fileEntry.isDirectory()) {
+					
+					//Resize Image
+					currentImage = ImageProc.resize(ImageIO.read(fileEntry), imgWidth, imgHeight); 
+				
+					File outFile = new File(procPathBlack + "/" + fileEntry.getName());
+					ImageIO.write(currentImage, "JPG", outFile);
+					sources.add(Highgui.imread(outFile.getPath()));                                             
+				}
+			}
+
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		/********** Test Purpose Only *************/
+		
+		List<Mat> matList = ImageProc.sampleImage(sources.get(0), 50, 50, 10);
+		
+		for(int i = 0; i < matList.size(); i++) {
+			Highgui.imwrite("base/test/" + i + ".jpg", matList.get(i));
+		}
+		
+		/****************************************/
+		
+		
+		/* Create Image Patches and calculate color feature vector for each patch */
+		Iterator<Mat> imgIter = sources.iterator();
+		Mat thisImage;
+		Mat featureMat = new Mat();
+		List<Mat> imagePatches = null;
+		Iterator<Mat> patchIter = null;
+		
+		while(imgIter.hasNext()) {
+			
+			thisImage = imgIter.next();
+			
+			//Randomly Sample Patches
+			imagePatches = ImageProc.sampleImage(thisImage, patchWidth, patchHeight, numPatch);
+			patchIter = imagePatches.iterator();
+			
+			//Create color feature vector for each patch
+			while(patchIter.hasNext()) {
+				featureMat.push_back(ImageProc.calColorFeature(patchIter.next()));
+			}
+
+		}
+
+	//	System.out.println(featureMat.rows());
+
+	
+		Mat centers = new Mat();
+		Mat bestLabels = new Mat();
+		Core.kmeans(featureMat, k, bestLabels, 
+				new TermCriteria(TermCriteria.EPS, 0, Math.pow(Math.E, -10)), 
+				0, Core.KMEANS_RANDOM_CENTERS, centers);
+/*
+		System.out.println("CENTERS\n" + centers.dump());
+
+		System.out.println("Rows " + centers.rows());
+		System.out.println("BESTLABEL" + bestLabels.dump());
+		System.out.println("Rows" + bestLabels.rows());
+*/
+		MatOfFloat bestLabelRange = new MatOfFloat(0, centers.total());
+
+		ArrayList<Mat> centerHist = new ArrayList<Mat>();
+		Mat centerHistMat = new Mat(0, (int) centers.total(), CvType.CV_32FC1);
+
+		imgIter = sources.listIterator();
+		int ptr = 0;
+		//System.out.println(bestLabels.type());
+
+		while(imgIter.hasNext()) {
+
+			System.out.println(ptr);
+			Mat thisMat = new Mat(bestLabels, new Range(ptr, ptr + numPatch), new Range(0, 1));
+			Mat mat = new Mat();
+			thisMat.convertTo(mat, CvType.CV_32F);
+
+			ArrayList<Mat> bestLabelList = new ArrayList<Mat>();
+			bestLabelList.add(mat);
+
+			Mat thisHist = new Mat();
+			Imgproc.calcHist(bestLabelList, new MatOfInt(0),  new Mat(), 
+					thisHist, new MatOfInt((int) centers.total()), bestLabelRange);
+
+			centerHist.add(thisHist);
+			centerHistMat.push_back(thisHist.t());
+			ptr += numPatch;
+			imgIter.next();
+		}
+
+		//System.out.println(centerHist.size());
+		System.out.println("Columns" + centerHistMat.cols());
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		/* Support Vector Machine Validation */
+
+		Mat labelMat = new Mat(sources.size(), 1, CvType.CV_32FC1);
+
+		double[] labels = new double[20];
+		for(int i = 0; i < 10; i++) { labels[i]  = 1; labels[i + 10] = 0; }
+		labelMat.put(0, 0, labels);
+		
+		CvSVM svm = new CvSVM();
+		svm.train(centerHistMat, labelMat);
+
+
+		Mat testImg = Highgui.imread("base/predict/3.jpg");
+		List<Mat> patches = ImageProc.sampleImage(testImg, 50, 50, 10);
+		List<Mat> features = new ArrayList<Mat>();
+		for(int i = 0; i < patches.size(); i++) {
+
+			Mat testVector = ImageProc.calColorFeature(patches.get(i));
+			features.add(testVector);
+		}
+
+		Mat testData = ImageProc.calFeatureVector(features, centers);
+		System.out.println("RESULT " + svm.predict(testData));
+
+
+		
+		/*
+
+		int binSize = 255 / 17;
+		MatOfFloat range = new MatOfFloat(0, 256);
+
+		Mat mMaskMat = new Mat();
+		MatOfInt ch = new MatOfInt(0);
+
+		Mat data = new Mat();
+		 */
+
+
+		/*
+					imgTiles[i][j] = new Mat(thisImage, 
+							new Range(i*unitWidth, (( i + 1)*unitWidth < imgWidth ? (i+1)*unitWidth : imgWidth)),
+							new Range(j*unitHeight, ((j + 1)*unitHeight < imgHeight) ? ( j + 1)*unitHeight : imgHeight));
+		for(int i = 0; i < horiSize; i++) {
+			for(int j = 0; j < vertiSize; j++) {
+
+			}
+		}
+
+		int k = 100;
+		Mat centers = new Mat();
+		Mat bestLabels = new Mat();
+		Core.kmeans(featureMat, 10, bestLabels, 
+				new TermCriteria(TermCriteria.EPS, 0, Math.pow(Math.E, -10)), 
+				0, Core.KMEANS_RANDOM_CENTERS, centers);
+
+		System.out.println("CENTERS\n" + centers.dump());
+
+		System.out.println("Rows " + centers.rows());
+		System.out.println("BESTLABEL" + bestLabels.dump());
+		System.out.println("Rows" + bestLabels.rows());
+
+		MatOfFloat bestLabelRange = new MatOfFloat(0, centers.total());
+
+		Mat centerHist = new Mat();
+		ArrayList<Mat> bestLabelList = new ArrayList<Mat>();
+		bestLabelList.add(bestLabels);
+
+		Imgproc.calcHist(bestLabelList, new MatOfInt(0),  new Mat(), 
+				centerHist, new MatOfInt(bestLabels.cols()), bestLabelRange);
+
+		//Highgui.imwrite("output/res.jpg", srcImg);
+		/*
+		Highgui.imwrite("output/blue.jpg", bgrPlanes.get(0));
+		Highgui.imwrite("output/blue.jpg", bgrPlanes.get(0));
+		Highgui.imwrite("output/green.jpg", bgrPlanes.get(1));
+		 */
+
+		/*
+
+		ArrayList<Mat> lstPlane_b = new ArrayList<Mat>();
+		lstPlane_b.add(bgrPlanes.get(0));
+
+		ArrayList<Mat> lstPlane_g = new ArrayList<Mat>();
+		lstPlane_g.add(bgrPlanes.get(1));
+
+		ArrayList<Mat> lstPlane_r = new ArrayList<Mat>();
+		lstPlane_r.add(bgrPlanes.get(2));
+
+		Mat mMaskMat = new Mat();
+		MatOfInt ch = new MatOfInt(0);
+
+
+
+		Mat mHist_b = new Mat();
+		Mat mHist_g = new Mat();
+		Mat mHist_r = new Mat();
+
+		Imgproc.calcHist(lstPlane_b, ch,  mMaskMat, mHist_b, new MatOfInt(binSize), range);
+		Imgproc.calcHist(lstPlane_g, ch,  mMaskMat, mHist_g, new MatOfInt(binSize), range);
+		Imgproc.calcHist(lstPlane_r, ch,  mMaskMat, mHist_r, new MatOfInt(binSize), range);
+
+	//	System.out.println("Size: " + mHist_b.get(0, 0).length);
+
+
+
+
+		int histWidth = 512;
+		int histHeight = 400;
+		long binWidth = Math.round((double) histWidth / binSize);
+		Mat histImage = new Mat( histHeight, histWidth, CvType.CV_8UC3, new Scalar(0, 0, 0));
+
+		for( int i = 1; i < binSize; i++) {
+
+			Core.line( histImage, new Point(binWidth*(i - 1), histHeight - Math.round(mHist_b.get(i - 1, 0)[0])),
+					new Point(binWidth*i, histHeight - Math.round(mHist_b.get(i, 0)[0])), new Scalar(255, 0, 0));
+
+			Core.line( histImage, new Point(binWidth*(i - 1), histHeight - Math.round(mHist_g.get(i - 1, 0)[0])),
+					new Point(binWidth*i, histHeight - Math.round(mHist_g.get(i, 0)[0])), new Scalar(0, 255, 0));
+
+			Core.line( histImage, new Point(binWidth*(i - 1), histHeight - Math.round(mHist_g.get(i - 1, 0)[0])),
+					new Point(binWidth*i, histHeight - Math.round(mHist_r.get(i, 0)[0])), new Scalar(0, 0, 255));
+
+
+
+		}
+
+		Highgui.imwrite("output/hist.jpg", histImage);
+
+	}
+
+		 */
+	}
+
+
+}

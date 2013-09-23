@@ -1,0 +1,6 @@
+word1.jpg
+word2.jpg
+word3.jpg
+word4.jpg
+word5.jpg
+word6.jpg
