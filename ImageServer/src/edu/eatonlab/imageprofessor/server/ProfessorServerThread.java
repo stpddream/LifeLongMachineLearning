@@ -1,11 +1,15 @@
 package edu.eatonlab.imageprofessor.server;
 import edu.eatonlab.imageprofessor.communication.Message;
 import edu.eatonlab.imageprofessor.communication.XMLMessage;
+import edu.eatonlab.imageprofessor.debug.WekaTest;
 import edu.eatonlab.imageprofessor.imageproc.FeatureExtractor;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Range;
 import org.xml.sax.SAXException;
+import weka.core.Instances;
+import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.Remove;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -20,21 +24,21 @@ import java.util.logging.Logger;
 
 public class ProfessorServerThread extends Thread {
 
-	private Socket clientSocket;
-	private int numQueries;
-	private ObjectOutputStream out;
-	private ObjectInputStream in;
+    private Socket clientSocket;
+    private int numQueries;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
 
     private BufferedOutputStream bos;
     private InputStreamReader inreader;
     private BufferedReader br;
 
-	private Properties prop;
-	private int budgetLimit;
-	private static int numQueryClient = 0;
-	private static Logger queryLog = Logger.getLogger("edu.eatonlab.imageprofessor");
-	private int width;
-	private int height;
+    private Properties prop;
+    private int budgetLimit;
+    private static int numQueryClient = 0;
+    private static Logger queryLog = Logger.getLogger("edu.eatonlab.imageprofessor");
+    private int width;
+    private int height;
 
     private boolean taskFlag = false;
 
@@ -47,72 +51,75 @@ public class ProfessorServerThread extends Thread {
     private int STATUS_SUCCESS = 0;
     private int STATUS_FAILURE = -1;
 
-	public ProfessorServerThread(Socket socket, Properties prop) {
-		this.clientSocket = socket;
-		this.prop = prop;
-		this.budgetLimit = Integer.valueOf(prop.getProperty("Budget"));
-	}
+    public ProfessorServerThread(Socket socket, Properties prop) {
+        this.clientSocket = socket;
+        this.prop = prop;
+        this.budgetLimit = Integer.valueOf(prop.getProperty("Budget"));
+    }
 
-	public void run() {
-		try {
-			
-			in = new ObjectInputStream(clientSocket.getInputStream());
-			out = new ObjectOutputStream(clientSocket.getOutputStream());
+    public void run() {
+        try {
+
+            in = new ObjectInputStream(clientSocket.getInputStream());
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
 
             bos = new BufferedOutputStream(clientSocket.getOutputStream());
             inreader = new InputStreamReader(clientSocket.getInputStream());
             br = new BufferedReader(inreader);
 
-			numQueries = Integer.valueOf(prop.getProperty("NumberQueries", "20"));
+            numQueries = Integer.valueOf(prop.getProperty("NumberQueries", "20"));
             sendMsg(new XMLMessage(STATUS_SUCCESS + ""));  //Signal Connection Success
+
 
             XMLMessage connType = this.readMsg();
 
-			if(connType.getContent().equals("QUERY")) {
-				if(numQueryClient > 1) throw new IOException("Robot client already connected");
-				handleQuery();
-			}
-			else if(connType.getContent().equals("ADMIN")) {
-				handleAdmin();
-			}
-			
-		} catch(IOException e) {
-			e.printStackTrace();
-			System.exit(-1);
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-			System.exit(-1);
-		} catch(BudgetLimitExceededException e) {
-			System.out.println("Budget Limit Exceeded!!");
-			e.printStackTrace();
-			System.exit(-1);
-		} catch(Exception e) {
-			e.printStackTrace();
-			System.exit(-1);
-		}
-	}
+            if(connType.getContent().equals("QUERY")) {
+                if(numQueryClient > 1) throw new IOException("Robot client already connected");
+                System.out.println("haha");
+                handleQuery();
+
+            }
+            else if(connType.getContent().equals("ADMIN")) {
+                handleAdmin();
+            }
+
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        } catch(ClassNotFoundException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        } catch(BudgetLimitExceededException e) {
+            System.out.println("Budget Limit Exceeded!!");
+            e.printStackTrace();
+            System.exit(-1);
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
 
 
 
 
-	/**
-	 * Process image queries 
-	 * @throws IOException
-	 * @throws ClassNotFoundException
-	 */
-	private void handleQuery() throws 
-	        IOException, ClassNotFoundException, BudgetLimitExceededException, NotEnoughImagesException,
+    /**
+     * Process image queries
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    private void handleQuery() throws
+            IOException, ClassNotFoundException, BudgetLimitExceededException, NotEnoughImagesException,
             ParserConfigurationException, TransformerException, SAXException {
-		queryLog.log(Level.INFO, "Robot Client connected");
-		
-		width = Integer.valueOf(prop.getProperty("ImageWidth"));
-		height= Integer.valueOf(prop.getProperty("ImageHeight"));
-		
-		ProfessorServerThread.numQueryClient++;
-		ImageGate imageGate = new ImageGate(prop);
-		while(true) {
-			if(ServerStatus.budget > Integer.valueOf(prop.getProperty("Budget", "30"))) 
-					throw new BudgetLimitExceededException();
+        queryLog.log(Level.INFO, "Robot Client connected");
+
+        width = Integer.valueOf(prop.getProperty("ImageWidth"));
+        height= Integer.valueOf(prop.getProperty("ImageHeight"));
+
+        ProfessorServerThread.numQueryClient++;
+        ImageGate imageGate = new ImageGate(prop);
+        while(true) {
+            if(ServerStatus.budget > Integer.valueOf(prop.getProperty("Budget", "30")))
+                throw new BudgetLimitExceededException();
 
             XMLMessage queryType = readMsg();
             String type = queryType.getContent();
@@ -195,26 +202,41 @@ public class ProfessorServerThread extends Thread {
 
             }
 
+            else if(type.equals("QueryTest")) {
+                try {
+                    sendMsg(WekaTest.getMessage());
+
+                } catch(IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Data not found");
+                } catch(Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Exception!");
+                }
 
 
-		
-		}	
-	}
+            }
 
-	
-	private void handleAdmin() throws IOException {
-		while(true) {
-			out.writeObject(new Message("Professor Server Admin Interface"));
-			
-			String statusMessage = "Budget: " + ServerStatus.budget + " out of " + 
-			         prop.getProperty("Budget") + "\n";
-			         
-			         if(ServerStatus.getNumQueries() == 0) statusMessage += "No Queries Available";
-			         else statusMessage += ServerStatus.getQuery(-1);
-			        
-			out.writeObject(new Message(statusMessage));
-		}
-	}
+
+
+
+        }
+    }
+
+
+    private void handleAdmin() throws IOException {
+        while(true) {
+            out.writeObject(new Message("Professor Server Admin Interface"));
+
+            String statusMessage = "Budget: " + ServerStatus.budget + " out of " +
+                    prop.getProperty("Budget") + "\n";
+
+            if(ServerStatus.getNumQueries() == 0) statusMessage += "No Queries Available";
+            else statusMessage += ServerStatus.getQuery(-1);
+
+            out.writeObject(new Message(statusMessage));
+        }
+    }
 
 
     private XMLMessage readMsg() throws IOException, ParserConfigurationException, SAXException {

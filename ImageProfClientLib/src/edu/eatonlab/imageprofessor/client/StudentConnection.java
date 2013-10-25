@@ -1,7 +1,6 @@
 package edu.eatonlab.imageprofessor.client;
 
 import edu.eatonlab.imageprofessor.communication.XMLMessage;
-import org.opencv.core.Mat;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,6 +10,8 @@ import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
+import java.util.List;
+
 
 /**
  * Class provides methods to connect with the
@@ -25,6 +26,7 @@ public class StudentConnection {
     private static ObjectInputStream in = null;
 
     private static BufferedOutputStream bos;
+    private static BufferedInputStream bis;
     private static InputStreamReader inreader = null;
     private static BufferedReader br = null;
     private static LinkedList<BufferedImage> imageList;
@@ -36,6 +38,10 @@ public class StudentConnection {
     private static String TYPE_TASK = "Task";
     private static String TYPE_QUERY = "Query";
 
+
+    public StudentConnection() {
+        int i = 5;
+    }
 
 
     /**
@@ -53,14 +59,17 @@ public class StudentConnection {
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
 
-            inreader = new InputStreamReader(socket.getInputStream());
+           // inreader = new InputStreamReader(socket.getInputStream());
+            bis = new BufferedInputStream(socket.getInputStream());
             bos = new BufferedOutputStream(socket.getOutputStream());
-            br = new BufferedReader(inreader);
+            //br = new BufferedReader(inreader);
 
         int status = -1;
         try {
-            sendMsg(XMLMessage.connMsg(CONNTYPE));
+
             status =  Integer.valueOf(readMsg().getContent());
+            System.out.println(status);
+            sendMsg(XMLMessage.connMsg(CONNTYPE));
             if(status != 0) throw new IOException();
         } catch(ParserConfigurationException e) {
             throw new IOException();
@@ -109,14 +118,14 @@ public class StudentConnection {
     public String query(String[] keyword) throws IOException {
 
         try {
-            sendMsg(XMLMessage.txtMsg(TYPE_QUERY));
+            sendMsg(XMLMessage.txtMsg("Query"));
             if(Integer.parseInt(readMsg().getContent()) != 0) throw new IOException();
 
             //Connection Success
             sendMsg(XMLMessage.txtMsg(keyword[0] + "," + keyword[1]));
             XMLMessage features = readMsg();
 
-            features.getContent();
+            return features.getContent();
 
         } catch(ParserConfigurationException e) {
             throw new IOException();
@@ -126,13 +135,73 @@ public class StudentConnection {
             throw new IOException("SAXException");
         }
 
-        return null;
-
     }
 
+    public String[][][][] queryTest() throws IOException {
+
+        try {
+            sendMsg(XMLMessage.txtMsg("QueryTest"));
+            XMLMessage encodings = readMsg();
+
+            List<String> features = encodings.getFeatureSet();
+            List<String> labels = encodings.getLabelSet();
+
+            String[][][][] featuresArr = new String[2][features.size()][][];
+
+            for(int i = 0; i < features.size(); i++) {
+
+                String[] lines = features.get(i).split("\n");
+
+                featuresArr[0][i] = new String[lines.length][];
+                for(int j = 0; j < lines.length; j++) {
+                    featuresArr[0][i][j] = lines[j].split(",");
+                }
+
+                String[] labelCols = labels.get(i).split("\n");
+
+                featuresArr[1][i] = new String[labelCols.length][1];
+
+                for(int j = 0; j < labelCols.length; j++) {
+
+                    featuresArr[1][i][j][0] = labelCols[j];
+                }
+
+
+            }
+
+            return featuresArr;
+
+        } catch(ParserConfigurationException e) {
+           throw new IOException();
+        } catch(TransformerException e) {
+            throw new IOException("Transformer Exception");
+        } catch(SAXException e) {
+            throw new IOException("SAXException");
+        }
+    }
+
+
     private static XMLMessage readMsg() throws IOException, SAXException, ParserConfigurationException {
-        if(br != null) return XMLMessage.fromXML(br.readLine());
-        throw new IOException("BufferedReader Null Pointer");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append((char)bis.read());
+        while(bis.available() > 0) {
+            sb.append((char)bis.read());
+        }
+
+        /////// Debugging Purposes //////
+        //Write file for debugging
+        try {
+            FileWriter fw = new FileWriter(new File("message.xml"));
+            fw.write(sb.toString());
+            fw.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        ////// Debugging Purposes ///////
+
+        return XMLMessage.fromXML(sb.toString());
     }
 
     private static void sendMsg(XMLMessage msg) throws ParserConfigurationException,

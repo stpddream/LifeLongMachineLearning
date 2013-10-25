@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ImageProfClientLib:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="95ad0917-410c-45eb-92a1-b47183e55b10" name="Default" comment="" />
     <ignored path="ImageProfClientLib.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/StudentConnection.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374259859288" ignored="false" />
-    <file path="/fragment.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374180392094" ignored="false" />
+    <file path="/StudentConnection.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382583840598" ignored="false" />
+    <file path="/fragment.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382492833149" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/edu/eatonlab/imageprofessor/communication.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374161855004" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/client/MonitorClient.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374161924286" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/imageproc/ImageUtil.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374260158423" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/client/RobotClient.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374161924286" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/communication/Message.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374161924286" ignored="false" />
-    <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374259423147" ignored="false" />
-    <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/server/ProfessorServerThread.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374260051109" ignored="false" />
-    <file path="/ProfessorServerThread.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374260047567" ignored="false" />
+    <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382494652667" ignored="false" />
+    <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/server/ProfessorServerThread.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382500927795" ignored="false" />
+    <file path="/ProfessorServerThread.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382494466759" ignored="false" />
     <file path="/ConnectionTest.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374259870635" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/server/ProfessorProtocol.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374180322975" ignored="false" />
     <file path="/ProfessorProtocol.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374182706811" ignored="false" />
@@ -22,8 +27,19 @@
     <file path="/ImageGate.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374247480744" ignored="false" />
     <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/server/ProfessorServer.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374247097370" ignored="false" />
     <file path="/ProfessorServer.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374247095087" ignored="false" />
-    <file path="/XMLMessage.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374259373610" ignored="false" />
+    <file path="/XMLMessage.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382494620392" ignored="false" />
     <file path="/ImageUtil.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1374260157880" ignored="false" />
+    <file path="$PROJECT_DIR$/../ImageServer/src/edu/eatonlab/imageprofessor/debug/WekaTest.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382412020261" ignored="false" />
+    <file path="/WekaTest.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382412019573" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../../../Studio/Projects/STQiang/src/STQiang.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382582455896" ignored="false" />
+    <file path="/STQiang.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382582413584" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../../../Studio/Projects/STQiang/src/TicketSwallower.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382582610359" ignored="false" />
+    <file path="/TicketSwallower.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382581894020" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../../../Studio/Projects/STQiang/src/QiangFrame.form" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382323112402" ignored="false" />
+    <file path="$PROJECT_DIR$/../ImageServer/message.xml" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382584550104" ignored="false" />
+    <file path="/LandMineTest.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382497791469" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../../../Studio/Projects/STQiang/src/DateParser.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382580666762" ignored="false" />
+    <file path="/DateParser.java" changelist="95ad0917-410c-45eb-92a1-b47183e55b10" time="1382579914701" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,19 +100,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StudentConnection.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="StudentConnection.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="34" selection-start="3632" selection-end="3632" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/ConnectionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="98" selection-start="1317" selection-end="1317" vertical-scroll-proportion="0.15549597">
+            <state line="184" column="42" selection-start="5561" selection-end="5561" vertical-scroll-proportion="0.02877698">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,10 +111,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LandMineTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/LandMineTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="32" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectionTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/ConnectionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="XMLMessage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
+            <state line="175" column="0" selection-start="5546" selection-end="5546" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,17 +149,18 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/StudentConnection.java" />
-        <option value="$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java" />
-        <option value="$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java" />
         <option value="$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/ConnectionTest.java" />
+        <option value="$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java" />
+        <option value="$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/LandMineTest.java" />
+        <option value="$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-286" />
-    <option name="y" value="300" />
-    <option name="width" value="1366" />
-    <option name="height" value="749" />
+    <option name="x" value="463" />
+    <option name="y" value="325" />
+    <option name="width" value="1602" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -150,7 +176,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -161,21 +187,114 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imageprofessor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="debug" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imageprofessor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="communication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageProfClientLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imageprofessor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/opencv/opencv-245.jar!/" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ImageServer" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
@@ -183,7 +302,7 @@
       <recent name="edu.eatonlab.imageprofessor.communication" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConnectionTest">
+  <component name="RunManager" selected="Application.LandMineTest">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -288,8 +407,25 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="1">
+    <configuration default="false" name="LandMineTest" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.eatonlab.imageprofessor.debug.LandMineTest" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ImageProfClientLib" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.ConnectionTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.LandMineTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -323,8 +459,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-286" y="300" width="1366" height="749" extended-state="0" />
-    <editor active="false" />
+    <frame x="463" y="325" width="1602" height="873" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -334,17 +470,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17310168" sideWeight="0.6717452" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24967825" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -413,34 +549,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/ConnectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="86" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/jdk1.7/src.zip!/java/lang/NumberFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0">
+        <state line="175" column="0" selection-start="5546" selection-end="5546" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.7/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="491" column="0" selection-start="17855" selection-end="17855" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="491" column="0" selection-start="17855" selection-end="17855" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
@@ -453,13 +571,29 @@
     <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/ConnectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="31" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -476,55 +610,51 @@
     <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.7/src.zip!/java/lang/NumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="64" column="0" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.7/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="491" column="0" selection-start="17855" selection-end="17855" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="491" column="0" selection-start="17855" selection-end="17855" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
+    <entry file="jar:///usr/lib/jvm/jdk1.6/src.zip!/java/net/SocketInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="34" selection-start="3632" selection-end="3632" vertical-scroll-proportion="0.0">
+        <state line="167" column="0" selection-start="4654" selection-end="4654" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/communication/XMLMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="0" selection-start="5546" selection-end="5546" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/ConnectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="98" selection-start="1317" selection-end="1317" vertical-scroll-proportion="0.15549597">
+        <state line="8" column="13" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/debug/LandMineTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="32" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/eatonlab/imageprofessor/client/StudentConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="184" column="42" selection-start="5561" selection-end="5561" vertical-scroll-proportion="0.02877698">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -537,10 +667,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>ImageProfClientLib:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

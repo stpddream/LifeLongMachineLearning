@@ -6,13 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created with IntelliJ IDEA.
- * User: stpanda
- * Date: 13-7-18
- * Time: 下午1:25
- * To change this template use File | Settings | File Templates.
- */
 public class ConnectionTest {
 
     private static final String ipAdd = "localhost";

@@ -10,6 +10,8 @@
     <orderEntry type="library" name="json-org" level="project" />
     <orderEntry type="library" name="opencv" level="application" />
     <orderEntry type="library" name="edu.mit.jwi_2.2.6" level="project" />
+    <orderEntry type="library" name="opencv" level="project" />
+    <orderEntry type="library" name="weka" level="project" />
   </component>
 </module>
 
